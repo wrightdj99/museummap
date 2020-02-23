@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+  <meta charset="utf-8">
+    <style>
+        #map {
+            height: 500px;
+            width: 700px;
+        }
+    
+    </style>
+
+  <title>Dan Wright's Museum Leaflet</title>
+
+</head>
+
+<body>
+    <div id = "map"></div>
+    <script>
+        var museums = [
+            ["Chess Records; The original blues studio of Chicago. Willie Dixon's Bass and other blues memorabilia are on display here. It's only a short walk from the CTA Red Line's Cermak-Chinatown Stop.",41.853617, -87.624002],
+            ["Chicago History Museum; A medium-sized museum conveniently located at the end of the North Ave bus route that tells the story of Chicago from a multitude of angles.",41.911812, -87.631864],
+            ["Museum of Mexican Art; A large art collection of 10,000 Mexican paintings and sculptures conveniently located near the CTA Pink Line's Pilsen Stop (18th).",41.856003, -87.672914],
+            ["American Writers Museum; A museum in Chicago's Loop (Near the State/Lake L Stop) devoted to the written word, journalistic, creative or otherwise.",41.885547, -87.624631],
+            ["Haitian American Museum; A museum located off the CTA Red Line's Wilson Stop in Uptown that works to celebrate and preserve the Haitian-American culture that has taken root in Chicago.",41.966991, -87.659675]
+        ];
+        var map = L.map('map').setView([41.891668, -87.628066], 10.5);
+        
+        L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=Wla0pU0eTvjkyxRTH8k0', {
+            attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+        }).addTo(map);
+        
+            for (var i = 0; i < museums.length; i++) {
+			marker = new L.marker([museums[i][1],museums[i][2]])
+				.bindPopup(museums[i][0])
+				.addTo(map);
+            }
+        document.body.style.backgroundColor = 'blue';
+        
+    </script>
+    <h1 style="color:whitesmoke; font-family: tahoma">Hello!</h1>
+    <p style="color:whitesmoke; font-family: tahoma"> Next time you're in Chicago, feel free to use this map to see some of Chicago's more underrated museums. I've only gathered five at the moment, but feel free to suggest more for me to add to the map.</p>
+    <p style="color:whitesmoke; font-family: tahoma">My Discord for museum suggestions: depressame_street/rue_de_jongo</p>
+</body>
+</html>
